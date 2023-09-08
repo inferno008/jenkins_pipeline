@@ -8,8 +8,10 @@ pipeline {
             post {
                 success {
                     mail to: "mbuvan75@gmail.com",
+                    attachLog : true,
                     subject: "build status email",
                     body: "build was successful!!"
+                    
                 }
             }
         }
