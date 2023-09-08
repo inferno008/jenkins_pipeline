@@ -4,85 +4,105 @@ pipeline {
         stage("build") {
             steps {
                 echo "building using maven ..."
+                sh 'echo "Build log content" > build.log'
             }
             post {
                 success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "build status email",
-                    body: "build was successful!!"
-                    
+                    emailext attachmentsPattern: 'build.log',
+                        mimeType: 'text/plain',
+                        subject: "build status email",
+                        body: "build was successful!!",
+                        to: "mbuvan75@gmail.com"
                 }
             }
         }
         stage("unit and integration test") {
             steps {
                 echo "testing using kobiton ..."
+                sh 'echo "Test log content" > test.log'
             }
             post {
                 success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "testing status email",
-                    body: "testing was successful!!"
+                    emailext attachmentsPattern: 'test.log',
+                        mimeType: 'text/plain',
+                        subject: "testing status email",
+                        body: "testing was successful!!",
+                        to: "mbuvan75@gmail.com"
                 }
             }
         }
         stage("code analysis") {
             steps {
                 echo "analyzing using visual code grepper ..."
+                sh 'echo "Code Analysis log content" > code-analysis.log'
             }
             post {
                 success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "analysis status email",
-                    body: "code analysis was successful!!"
+                    emailext attachmentsPattern: 'code-analysis.log',
+                        mimeType: 'text/plain',
+                        subject: "code analysis status email",
+                        body: "code analysis was successful!!",
+                        to: "mbuvan75@gmail.com"
                 }
             }
         }
         stage("security scan") {
             steps {
                 echo "security scanning using intruder ..."
+                sh 'echo "Security Scan log content" > security-scan.log'
             }
             post {
                 success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "security scan status email",
-                    body: "security scanning was successful!!"
+                    emailext attachmentsPattern: 'security-scan.log',
+                        mimeType: 'text/plain',
+                        subject: "security scan status email",
+                        body: "security scanning was successful!!",
+                        to: "mbuvan75@gmail.com"
                 }
             }
         }
         stage("deploy to staging") {
             steps {
                 echo "deploying to staging using aws ec2 ..."
+                sh 'echo "Deploy to Staging log content" > deploy-to-staging.log'
             }
             post {
                 success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "deploy to staging status email",
-                    body: "deploy to staging was successful!!"
+                    emailext attachmentsPattern: 'deploy-to-staging.log',
+                        mimeType: 'text/plain',
+                        subject: "deploy to staging status email",
+                        body: "deploy to staging was successful!!",
+                        to: "mbuvan75@gmail.com"
                 }
             }
         }
         stage("integration tests on staging") {
             steps {
                 echo "integration tests on staging using codoid etl testing services ..."
+                sh 'echo "Integration Tests on Staging log content" > integration-tests-on-staging.log'
             }
             post {
                 success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "integration tests on staging status email",
-                    body: "integration tests on staging was successful!!"
+                    emailext attachmentsPattern: 'integration-tests-on-staging.log',
+                        mimeType: 'text/plain',
+                        subject: "integration tests on staging status email",
+                        body: "integration tests on staging was successful!!",
+                        to: "mbuvan75@gmail.com"
                 }
             }
         }
         stage("deploy to production") {
             steps {
                 echo "deploy to production using aws ec2 ..."
+                sh 'echo "Deploy to Production log content" > deploy-to-production.log'
             }
             post {
                 success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "deploy to production status email",
-                    body: "deploy to production server was successful!!"
+                    emailext attachmentsPattern: 'deploy-to-production.log',
+                        mimeType: 'text/plain',
+                        subject: "deploy to production status email",
+                        body: "deploy to production server was successful!!",
+                        to: "mbuvan75@gmail.com"
                 }
             }
         }
