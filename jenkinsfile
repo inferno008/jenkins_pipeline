@@ -7,10 +7,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext subject: "Build Status Email",
-                              body: "Build was successful!",
-                              to: "mbuvan75@gmail.com",
-                              attachmentsPattern: '**/build.log' 
+                    mail to: "mbuvan75@gmail.com",
+                    subject: "build status email",
+                    body: "build was successful!!"
                 }
             }
         }
@@ -20,10 +19,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext subject: "Testing Status Email",
-                              body: "Testing was successful!",
-                              to: "mbuvan75@gmail.com",
-                              attachmentsPattern: '**/test.log' 
+                    mail to: "mbuvan75@gmail.com",
+                    subject: "testing status email",
+                    body: "testing was successful!!"
                 }
             }
         }
@@ -33,10 +31,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext subject: "Analysis Status Email",
-                              body: "Code analysis was successful!",
-                              to: "mbuvan75@gmail.com",
-                              attachmentsPattern: '**/analysis.log' 
+                    mail to: "mbuvan75@gmail.com",
+                    subject: "analysis status email",
+                    body: "code analysis was successful!!"
                 }
             }
         }
@@ -46,10 +43,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext subject: "Security Scan Status Email",
-                              body: "Security scanning was successful!",
-                              to: "mbuvan75@gmail.com",
-                              attachmentsPattern: '**/security.log' 
+                    mail to: "mbuvan75@gmail.com",
+                    subject: "security scan status email",
+                    body: "security scanning was successful!!"
                 }
             }
         }
@@ -59,10 +55,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext subject: "Deploy to Staging Status Email",
-                              body: "Deploy to staging was successful!",
-                              to: "mbuvan75@gmail.com",
-                              attachmentsPattern: '**/deploy_staging.log' 
+                    mail to: "mbuvan75@gmail.com",
+                    subject: "deploy to staging status email",
+                    body: "deploy to staging was successful!!"
                 }
             }
         }
@@ -72,10 +67,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext subject: "Integration Tests on Staging Status Email",
-                              body: "Integration tests on staging was successful!",
-                              to: "mbuvan75@gmail.com",
-                              attachmentsPattern: '**/integration_staging.log'
+                    mail to: "mbuvan75@gmail.com",
+                    subject: "integration tests on staging status email",
+                    body: "integration tests on staging was successful!!"
                 }
             }
         }
@@ -85,10 +79,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext subject: "Deploy to Production Status Email",
-                              body: "Deploy to production server was successful!",
-                              to: "mbuvan75@gmail.com",
-                              attachmentsPattern: '**/deploy_production.log' 
+                    mail to: "mbuvan75@gmail.com",
+                    subject: "deploy to production status email",
+                    body: "deploy to production server was successful!!"
                 }
             }
         }
