@@ -1,89 +1,16 @@
-pipeline {
-    agent any
-    stages {
-        stage("build") {
-            steps {
-                echo "building using maven ..."
-            }
-            post {
-                success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "build status email",
-                    body: "build was successful!!"
-                }
-            }
-        }
-        stage("unit and integration test") {
-            steps {
-                echo "testing using kobiton ..."
-            }
-            post {
-                success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "testing status email",
-                    body: "testing was successful!!"
-                }
-            }
-        }
-        stage("code analysis") {
-            steps {
-                echo "analyzing using visual code grepper ..."
-            }
-            post {
-                success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "analysis status email",
-                    body: "code analysis was successful!!"
-                }
-            }
-        }
-        stage("security scan") {
-            steps {
-                echo "security scanning using intruder ..."
-            }
-            post {
-                success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "security scan status email",
-                    body: "security scanning was successful!!"
-                }
-            }
-        }
-        stage("deploy to staging") {
-            steps {
-                echo "deploying to staging using aws ec2 ..."
-            }
-            post {
-                success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "deploy to staging status email",
-                    body: "deploy to staging was successful!!"
-                }
-            }
-        }
-        stage("integration tests on staging") {
-            steps {
-                echo "integration tests on staging using codoid etl testing services ..."
-            }
-            post {
-                success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "integration tests on staging status email",
-                    body: "integration tests on staging was successful!!"
-                }
-            }
-        }
-        stage("deploy to production") {
-            steps {
-                echo "deploy to production using aws ec2 ..."
-            }
-            post {
-                success {
-                    mail to: "mbuvan75@gmail.com",
-                    subject: "deploy to production status email",
-                    body: "deploy to production server was successful!!"
-                }
-            }
-        }
-    }
+pipeline{
+
+agent any
+
+stages{
+stage('build'){
+steps{
+echo "building the project"
+}
+}
+post{
+success{
+emailext body: emailext body: 'jenkins', subject: 'jenkins', to: 'mbuvan75@gmail.com'
+}
+}
 }
