@@ -1,20 +1,75 @@
-pipeline {
+pipeline 
+{
     agent any
     stages {
-        stage('build') {
+        stage("build") {
             steps {
-                echo "building the project"
+                echo "building using maven ..."
+            }
+            post {
+                success {
+                    emailext attachLog: true, body: 'building was successful!!', subject: 'building status', to: 'mbuvan75@gmail.com'  
+                }
             }
         }
-    }
-    post {
-        success {
-            emailext attachLog: true, body: 'jenkins', subject: 'test email success', to: 'mbuvan75@gmail.com'
+        stage("unit and integration test") {
+            steps {
+                echo "testing using kobiton ..."
+            }
+            post {
+                success {
+                    emailext attachLog: true, body: 'unit and integration testing was successful!!', subject: 'unit and integration testing status', to: 'mbuvan75@gmail.com' 
+                }
+            }
         }
-        failure {
-            emailext attachLog: true, body: 'jenkins', subject: 'test email failure', to: 'mbuvan75@gmail.com'
+        stage("code analysis") { 
+            steps {
+                echo "analyzing using visual code grepper ..."
+            }
+            post {
+                success {
+                  emailext attachLog: true, body: 'code analysis was successful!!', subject: 'code analysis status', to: 'mbuvan75@gmail.com' 
+                }
+            }
         }
-    }
-}
-
+        stage("security scan") {
+            steps {
+                echo "security scanning using intruder ..."
+            }
+            post {
+                success {
+                   emailext attachLog: true, body: 'security scan was successful!!', subject: 'security scan status', to: 'mbuvan75@gmail.com' 
+                }
+            }
+        }
+        stage("deploy to staging") { // 
+            steps {
+                echo "deploying to staging using aws ec2 ..."
+            }
+            post {
+                success {
+                   emailext attachLog: true, body: 'deploy to staging was successful!!', subject: 'deploy to staging status', to: 'mbuvan75@gmail.com' 
+                }
+            }
+        }
+        stage("integration tests on staging") {
+            steps {
+                echo "integration tests on staging using codoid etl testing services ..."
+            }
+            post {
+                success {
+                    emailext attachLog: true, body: 'integration tests on staging was successful!!', subject: 'integration testing on staging status', to: 'mbuvan75@gmail.com'
+                }
+            }
+        }
+        stage("deploy to production") {
+            steps {
+                echo "deploy to production using aws ec2 ..." 
+            }
+            post {
+                success {
+                    emailext attachLog: true, body: 'deploy to production was successful!!', subject: 'deploy to production status', to: 'mbuvan75@gmail.com'
+                }
+            }
+        }
 
