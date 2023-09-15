@@ -9,6 +9,9 @@ pipeline {
                 success {
                     emailext attachLog: true, body: 'building was successful!!', subject: 'building status', to: 'mbuvan75@gmail.com'
                 }
+                failure {
+                    emailext attachLog: true, body: 'building failed!!', subject: 'building status', to: 'mbuvan75@gmail.com'
+                }
             }
         }
         stage("unit and integration test") {
@@ -18,6 +21,9 @@ pipeline {
             post {
                 success {
                     emailext attachLog: true, body: 'unit and integration testing was successful!!', subject: 'unit and integration testing status', to: 'mbuvan75@gmail.com'
+                }
+                failure {
+                    emailext attachLog: true, body: 'unit and integration testing failed!!', subject: 'unit and integration testing status', to: 'mbuvan75@gmail.com'
                 }
             }
         }
@@ -29,6 +35,9 @@ pipeline {
                 success {
                     emailext attachLog: true, body: 'code analysis was successful!!', subject: 'code analysis status', to: 'mbuvan75@gmail.com'
                 }
+                failure {
+                    emailext attachLog: true, body: 'code analysis failed!!', subject: 'code analysis status', to: 'mbuvan75@gmail.com'
+                }
             }
         }
         stage("security scan") {
@@ -38,6 +47,9 @@ pipeline {
             post {
                 success {
                     emailext attachLog: true, body: 'security scan was successful!!', subject: 'security scan status', to: 'mbuvan75@gmail.com'
+                }
+                failure {
+                    emailext attachLog: true, body: 'security scan failed!!', subject: 'security scan status', to: 'mbuvan75@gmail.com'
                 }
             }
         }
@@ -49,6 +61,9 @@ pipeline {
                 success {
                     emailext attachLog: true, body: 'deploy to staging was successful!!', subject: 'deploy to staging status', to: 'mbuvan75@gmail.com'
                 }
+                failure {
+                    emailext attachLog: true, body: 'deploy to staging failed!!', subject: 'deploy to staging status', to: 'mbuvan75@gmail.com'
+                }
             }
         }
         stage("integration tests on staging") {
@@ -58,6 +73,9 @@ pipeline {
             post {
                 success {
                     emailext attachLog: true, body: 'integration tests on staging was successful!!', subject: 'integration testing on staging status', to: 'mbuvan75@gmail.com'
+                }
+                failure {
+                    emailext attachLog: true, body: 'integration tests on staging failed!!', subject: 'integration testing on staging status', to: 'mbuvan75@gmail.com'
                 }
             }
         }
@@ -69,7 +87,11 @@ pipeline {
                 success {
                     emailext attachLog: true, body: 'deploy to production was successful!!', subject: 'deploy to production status', to: 'mbuvan75@gmail.com'
                 }
+                failure {
+                    emailext attachLog: true, body: 'deploy to production failed!!', subject: 'deploy to production status', to: 'mbuvan75@gmail.com'
+                }
             }
         }
     }
 }
+
