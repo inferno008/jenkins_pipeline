@@ -9,7 +9,7 @@ pipeline {
     }
     post {
         success {
-            emailext body: 'jenkins', subject: 'jenkins', to: 'mbuvan75@gmail.com'
+            emailext attachLog: true, body: 'jenkins', subject: 'jenkins', to: 'mbuvan75@gmail.com'
         }
     }
 }
