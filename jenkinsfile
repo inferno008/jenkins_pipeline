@@ -1,5 +1,4 @@
-pipeline 
-{
+pipeline {
     agent any
     stages {
         stage("build") {
@@ -8,7 +7,7 @@ pipeline
             }
             post {
                 success {
-                    emailext attachLog: true, body: 'building was successful!!', subject: 'building status', to: 'mbuvan75@gmail.com'  
+                    emailext attachLog: true, body: 'building was successful!!', subject: 'building status', to: 'mbuvan75@gmail.com'
                 }
             }
         }
@@ -18,17 +17,17 @@ pipeline
             }
             post {
                 success {
-                    emailext attachLog: true, body: 'unit and integration testing was successful!!', subject: 'unit and integration testing status', to: 'mbuvan75@gmail.com' 
+                    emailext attachLog: true, body: 'unit and integration testing was successful!!', subject: 'unit and integration testing status', to: 'mbuvan75@gmail.com'
                 }
             }
         }
-        stage("code analysis") { 
+        stage("code analysis") {
             steps {
                 echo "analyzing using visual code grepper ..."
             }
             post {
                 success {
-                  emailext attachLog: true, body: 'code analysis was successful!!', subject: 'code analysis status', to: 'mbuvan75@gmail.com' 
+                    emailext attachLog: true, body: 'code analysis was successful!!', subject: 'code analysis status', to: 'mbuvan75@gmail.com'
                 }
             }
         }
@@ -38,17 +37,17 @@ pipeline
             }
             post {
                 success {
-                   emailext attachLog: true, body: 'security scan was successful!!', subject: 'security scan status', to: 'mbuvan75@gmail.com' 
+                    emailext attachLog: true, body: 'security scan was successful!!', subject: 'security scan status', to: 'mbuvan75@gmail.com'
                 }
             }
         }
-        stage("deploy to staging") { // 
+        stage("deploy to staging") {
             steps {
                 echo "deploying to staging using aws ec2 ..."
             }
             post {
                 success {
-                   emailext attachLog: true, body: 'deploy to staging was successful!!', subject: 'deploy to staging status', to: 'mbuvan75@gmail.com' 
+                    emailext attachLog: true, body: 'deploy to staging was successful!!', subject: 'deploy to staging status', to: 'mbuvan75@gmail.com'
                 }
             }
         }
@@ -64,7 +63,7 @@ pipeline
         }
         stage("deploy to production") {
             steps {
-                echo "deploy to production using aws ec2 ..." 
+                echo "deploy to production using aws ec2 ..."
             }
             post {
                 success {
@@ -72,4 +71,5 @@ pipeline
                 }
             }
         }
-
+    }
+}
