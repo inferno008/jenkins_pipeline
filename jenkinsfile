@@ -1,16 +1,16 @@
-pipeline{
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                echo "building the project"
+            }
+        }
+    }
+    post {
+        success {
+            emailext body: 'jenkins', subject: 'jenkins', to: 'mbuvan75@gmail.com'
+        }
+    }
+}
 
-agent any
-
-stages{
-stage('build'){
-steps{
-echo "building the project"
-}
-}
-post{
-success{
-emailext body: emailext body: 'jenkins', subject: 'jenkins', to: 'mbuvan75@gmail.com'
-}
-}
-}
